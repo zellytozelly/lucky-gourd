@@ -1,0 +1,14 @@
+@use '/src/styles/constants/colors';
+
+.mainContainer {
+  display: flex;
+  height: 100%;
+  padding-top: 140px;
+  padding-bottom: 90px;
+
+  .cardWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
