@@ -1,14 +1,60 @@
 @use '/src/styles/constants/colors';
 
 .mainContainer {
-  display: flex;
-  height: 100%;
-  padding-top: 140px;
-  padding-bottom: 90px;
+  text-align: center;
 
-  .cardWrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  h1 {
+    margin-top: 100px;
+    font-size: 36px;
+    font-weight: bold;
+    color: colors.$TEXT39;
+  }
+
+  svg {
+    margin-top: 70px;
+    fill: colors.$MAIN_PINK;
+  }
+
+  .mainStartLink {
+    margin-top: 100px;
+
+    a {
+      padding: 10px 30px;
+      font-size: 20px;
+      color: colors.$WHITE;
+      background-color: colors.$DARK_MAIN_PINK;
+      border-radius: 15px;
+    }
+  }
+
+  .mainFooter {
+    margin-top: 120px;
+
+    a {
+      color: colors.$DARK_TEXT59;
+
+      &:hover {
+        /* stylelint-disable-next-line max-line-length */
+        background: linear-gradient(90deg, #ab6bff, #f99aef 15%, #cf57f0 35%, #ab6bff 50%, #f99aef 65%, #cf57f0 85%, #ab6bff);
+        background-clip: text;
+        background-size: 200% 100%;
+        animation: gradient 3.5s linear infinite;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    span {
+      color: colors.$MAIN_DARKGRAY;
+    }
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0;
+  }
+
+  100% {
+    background-position: 100%;
   }
 }

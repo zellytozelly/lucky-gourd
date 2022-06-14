@@ -12,11 +12,11 @@ import './styles/index.scss'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </Provider>
+    {/* <Provider store={store}> */}
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+    {/* </Provider> */}
   </React.StrictMode>
 )
 
