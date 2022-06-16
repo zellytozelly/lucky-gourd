@@ -1,0 +1,13 @@
+@use '/src/styles/constants/colors';
+
+.gourdPlayWrapper {
+  .gourdPlayHeader {
+    padding: 5px;
+
+    svg {
+      width: 35px;
+      height: 35px;
+      fill: colors.$TEXT39;
+    }
+  }
+}

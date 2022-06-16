@@ -1,7 +1,6 @@
-import { BallIcon } from 'assets/svgs'
-import { useEffect, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
+import { BallIcon } from 'assets/svgs'
 import styles from './main.module.scss'
 
 const Main = () => {
@@ -14,7 +13,7 @@ const Main = () => {
       </div>
       <footer className={styles.mainFooter}>
         <a href='https://velog.io/@zelly'>
-          @ zelly ,<span> Thanks to wan</span>
+          @ zelly ,<span> @ wan</span>
         </a>
       </footer>
     </section>
