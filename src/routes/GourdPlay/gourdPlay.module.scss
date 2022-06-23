@@ -1,13 +1,37 @@
 @use '/src/styles/constants/colors';
 
-.gourdPlayWrapper {
+.gourdPlayContainer {
   .gourdPlayHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 5px;
+    margin-top: 15px;
 
     svg {
       width: 35px;
       height: 35px;
       fill: colors.$TEXT39;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      color: colors.$TEXT29;
+    }
+  }
+
+  .gourdWrapper {
+    .basicGourdImg {
+      width: 340px;
+    }
+
+    .hitGourdImg {
+      width: 340px;
+    }
+
+    .toggleImg {
+      transform: rotate(0.97turn);
     }
   }
 }
