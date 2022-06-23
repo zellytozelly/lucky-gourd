@@ -1,0 +1,40 @@
+@use '/src/styles/constants/colors';
+
+.gourdContainer {
+  .gourd {
+    position: relative;
+    text-align: center;
+
+    .openGourdImg {
+      width: 340px;
+    }
+
+    p {
+      position: absolute;
+      top: 158px;
+      left: 166px;
+      width: 60px;
+      height: 293px;
+      word-break: break-all;
+      word-wrap: break-word;
+      writing-mode: vertical-lr;
+
+      .verticalSpan {
+        writing-mode: horizontal-tb;
+      }
+    }
+  }
+
+  .gourdShareLink {
+    margin-top: 100px;
+
+    a {
+      padding: 10px 30px;
+      font-size: 20px;
+      font-weight: 500;
+      color: colors.$TEXT39;
+      background-color: colors.$MAIN_LIGHTGRAY;
+      border-radius: 15px;
+    }
+  }
+}
