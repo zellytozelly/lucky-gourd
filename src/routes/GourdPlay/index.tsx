@@ -27,8 +27,7 @@ const GourdPlay = () => {
     if (randomCount === hitCount.current) {
       setRandomCount(0)
       setIsGourdOpen(true)
-      console.log('randomNumber', randomCount)
-      console.log('hitCount', hitCount.current)
+      console.log('GourdPlay-hitCount', hitCount.current)
     }
   }
 
