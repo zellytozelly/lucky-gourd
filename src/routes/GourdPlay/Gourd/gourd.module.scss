@@ -26,16 +26,69 @@
     }
   }
 
-  .gourdShareLink {
-    margin-top: 100px;
+  .popupContainer {
+    padding: 10px;
+    text-align: center;
+    visibility: hidden;
 
-    a {
+    .shareButtonWrapper {
+      svg {
+        margin: 5px;
+      }
+
+      .captureButton {
+        svg {
+          width: 48px;
+          height: 48px;
+        }
+      }
+    }
+
+    .clipboardWrapper {
+      margin-top: 10px;
+
+      .clipboardInput {
+        width: 160px;
+        padding: 10px;
+        font-size: 16px;
+        color: colors.$TEXT59;
+        background-color: colors.$MAIN_LIGHTGRAY;
+        border: 1px solid colors.$MAIN_GRAY;
+        border-radius: 10px 0 0 10px;
+      }
+
+      .clipboardButton {
+        padding: 10px;
+        font-size: 16px;
+        color: colors.$TEXT39;
+        background-color: colors.$MAIN_GRAY;
+        border: 1px solid colors.$MAIN_GRAY;
+        border-radius: 0 10px 10px 0;
+      }
+    }
+  }
+
+  .revealPopup {
+    visibility: visible;
+  }
+
+  .gourdShareLink {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 80px;
+
+    .shareLink {
       padding: 10px 30px;
       font-size: 20px;
       font-weight: 500;
       color: colors.$TEXT39;
       background-color: colors.$MAIN_LIGHTGRAY;
       border-radius: 15px;
+
+      &:hover {
+        background-color: colors.$MAIN_GRAY;
+      }
     }
   }
 }
