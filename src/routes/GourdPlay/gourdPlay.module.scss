@@ -26,12 +26,38 @@
       width: 340px;
     }
 
-    .hitGourdImg {
-      width: 340px;
-    }
+    .hitGourdButton {
+      position: relative;
 
-    .toggleImg {
-      transform: rotate(0.97turn);
+      .hitGourdImg {
+        width: 340px;
+      }
+
+      .toggleImg {
+        transform: rotate(0.97turn);
+      }
+
+      .hitCountText {
+        position: absolute;
+        top: 120px;
+        left: 116px;
+        font-size: 40px;
+        color: colors.$MAIN_PINK;
+        text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+        visibility: hidden;
+      }
+
+      &:focus {
+        .hitCountText {
+          visibility: visible;
+          animation: scale1 0.2s infinite alternate;
+        }
+      }
+
+      @keyframes scale1 {
+        0% { transform: scale(0.8); }
+        100% { transform: scale(1); }
+      }
     }
   }
 }

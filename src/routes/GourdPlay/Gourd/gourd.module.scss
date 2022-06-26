@@ -11,13 +11,14 @@
 
     p {
       position: absolute;
-      top: 158px;
-      left: 166px;
-      width: 60px;
+      top: 172px;
+      left: 157px;
+      width: 48px;
       height: 293px;
-      word-break: break-all;
+      font-size: 18px;
+      word-break: keep-all;
       word-wrap: break-word;
-      writing-mode: vertical-lr;
+      transform: skew(0.99turn, 1deg);
 
       .verticalSpan {
         writing-mode: horizontal-tb;
