@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
 import BasicGourd from 'assets/images/mainGourd.png'
-import { BallIcon } from 'assets/svgs'
 import styles from './main.module.scss'
 
 const Main = () => {
