@@ -31,7 +31,7 @@ const GourdPlay = () => {
   }
 
   useEffect(() => {
-    const randomNumber = Math.floor(Math.random() * 15 + 7)
+    const randomNumber = Math.floor(Math.random() * 15 + 10)
     setRandomCount(randomNumber)
   }, [])
 

@@ -3,22 +3,33 @@
 .mainContainer {
   text-align: center;
 
-  h1 {
+  p {
     margin-top: 100px;
-    font-size: 36px;
+    font-size: 20px;
+    color: colors.$TEXT39;
+  }
+
+  h1 {
+    margin-top: 10px;
+    font-size: 50px;
     font-weight: bold;
     color: colors.$TEXT39;
   }
 
-  svg {
-    width: 162px;
-    height: 162px;
-    margin-top: 70px;
-    fill: colors.$MAIN_PINK;
+  img {
+    width: 100%;
+    margin-top: 30px;
+    animation: rotate 15s infinite;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   .mainStartLink {
-    margin-top: 100px;
+    margin-top: 70px;
 
     a {
       padding: 10px 30px;
