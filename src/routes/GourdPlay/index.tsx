@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import cx from 'classnames'
 
 import Gourd from './Gourd'
@@ -27,7 +27,6 @@ const GourdPlay = () => {
     if (randomCount === hitCount.current) {
       setRandomCount(0)
       setIsGourdOpen(true)
-      console.log('GourdPlay-hitCount', hitCount.current)
     }
   }
 
@@ -53,12 +52,13 @@ const GourdPlay = () => {
         )}
 
         {!isGourdOpen && isBasicGourdHide && (
-          <button type='button' onClick={handleHitGourdClick}>
+          <button type='button' onClick={handleHitGourdClick} className={styles.hitGourdButton}>
             <img
               src={HitGourd}
               alt='HitGourd'
               className={cx(styles.hitGourdImg, { [styles.toggleImg]: hitGourdToggle })}
             />
+            <p className={styles.hitCountText}>{hitCount.current}</p>
           </button>
         )}
 
