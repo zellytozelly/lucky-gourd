@@ -31,7 +31,7 @@ const Gourd = () => {
 
   const shareData = {
     title: '박터트리기!',
-    text: '마구마구 터치해서 박을 터트려봐요! 랜선 박터트리기!',
+    text: '박터트리기 앱!!!',
     url: URL,
   }
 
