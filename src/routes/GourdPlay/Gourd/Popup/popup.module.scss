@@ -1,0 +1,35 @@
+@use '/src/styles/constants/colors';
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 230px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  color: colors.$TOAST_TEXT;
+  text-align: center;
+  letter-spacing: 0.15px;
+  background: colors.$TOAST_BACKGROUND;
+  border: 1px solid colors.$TOAST_POINT;
+  border-radius: 0.25rem;
+  opacity: 0;
+
+  &.fadeIn {
+    opacity: 1;
+    animation: fadeIn 0.4s;
+  }
+}

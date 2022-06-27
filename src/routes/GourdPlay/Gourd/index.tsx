@@ -3,16 +3,18 @@ import { NavLink } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'react-share'
 
+import Popup from './Popup'
+
 import data from 'assets/json/ment.json'
 import OpenGourd from 'assets/images/openGourd.png'
 import { CameraIcon } from 'assets/svgs'
 import styles from './gourd.module.scss'
-import cx from 'classnames'
 
 const Gourd = () => {
   const [gourdText, setGourdText] = useState('')
-  const [revealPopup, setRevealPopup] = useState(false)
+  const [showPopup, setShowPopup] = useState(false)
   const URL = process.env.REACT_APP_SHARE_URL ?? ''
+  let popupDelay: NodeJS.Timer
 
   const handleCaptureClick = () => {
     html2canvas(document.getElementById('popGourd') as HTMLElement).then((canvas) => {
@@ -35,15 +37,23 @@ const Gourd = () => {
     url: URL,
   }
 
+  const showPopupFunction = () => {
+    setShowPopup(true)
+    if (popupDelay) clearTimeout(popupDelay)
+    popupDelay = setTimeout(() => {
+      setShowPopup(false)
+    }, 800)
+  }
+
   const handleShareButtonClick = () => {
-    setRevealPopup((prev) => !prev)
-    if (!revealPopup) {
-      navigator.share(shareData)
-    }
+    navigator.clipboard.writeText(URL)
+    navigator.share(shareData)
+    showPopupFunction()
   }
 
   const handleClipboardButtonClick = () => {
     navigator.clipboard.writeText(URL)
+    showPopupFunction()
   }
 
   useEffect(() => {
@@ -62,7 +72,7 @@ const Gourd = () => {
         </div>
       </section>
 
-      <div className={cx(styles.popupContainer, { [styles.revealPopup]: revealPopup })}>
+      <div className={styles.shareContainer}>
         <div className={styles.shareButtonWrapper}>
           <button
             type='button'
@@ -86,6 +96,10 @@ const Gourd = () => {
           <button type='button' onClick={handleClipboardButtonClick} className={styles.clipboardButton}>
             클립보드 복사
           </button>
+        </div>
+
+        <div className={styles.popupWrapper}>
+          <Popup popupMessage='클립보드에 복사되었습니다.' showPopup={showPopup} />
         </div>
       </div>
 

@@ -26,10 +26,9 @@
     }
   }
 
-  .popupContainer {
+  .shareContainer {
     padding: 10px;
     text-align: center;
-    visibility: hidden;
 
     .shareButtonWrapper {
       svg {
@@ -66,17 +65,19 @@
         border-radius: 0 10px 10px 0;
       }
     }
-  }
 
-  .revealPopup {
-    visibility: visible;
+    .popupWrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
   }
 
   .gourdShareLink {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 80px;
+    margin-top: 20px;
 
     .shareLink {
       padding: 10px 30px;
