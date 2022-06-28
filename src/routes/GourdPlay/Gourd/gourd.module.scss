@@ -1,12 +1,15 @@
 @use '/src/styles/constants/colors';
 
 .gourdContainer {
+  position: relative;
+
   .gourd {
     position: relative;
     text-align: center;
 
     .openGourdImg {
       width: 340px;
+      margin-top: 45px;
     }
 
     p {
@@ -27,8 +30,14 @@
   }
 
   .shareContainer {
+    position: absolute;
+    bottom: 45px;
+    left: 60px;
     padding: 10px;
     text-align: center;
+    visibility: hidden;
+    background-color: rgba($color: colors.$WHITE, $alpha: 97%);
+    border-radius: 10px;
 
     .shareButtonWrapper {
       svg {
@@ -73,11 +82,15 @@
     }
   }
 
+  .openShareBox {
+    visibility: visible;
+  }
+
   .gourdShareLink {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 20px;
+    margin-top: 40px;
 
     .shareLink {
       padding: 10px 30px;
