@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import cx from 'classnames'
 
 import Gourd from './Gourd'
@@ -38,9 +38,10 @@ const GourdPlay = () => {
   return (
     <section className={styles.gourdPlayContainer}>
       <header className={styles.gourdPlayHeader}>
-        <Link to='/'>
+        <NavLink to='/' className={styles.homeLink}>
           <ArrowLeftIcon />
-        </Link>
+          <p>Home</p>
+        </NavLink>
         {!isGourdOpen && <h1> 박을 마구마구 터치해보세요!</h1>}
         {isGourdOpen && <h1> 박이 열렸어요!</h1>}
       </header>

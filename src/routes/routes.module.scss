@@ -4,9 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: colors.$MAIN_LIGHTGRAY;
 }
 
 .app {
   width: 375px;
   height: 100vh;
+  background-color: colors.$WHITE;
+  border-radius: 40px;
 }
