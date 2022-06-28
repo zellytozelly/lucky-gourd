@@ -43,7 +43,7 @@ const GourdPlay = () => {
           <p>Home</p>
         </NavLink>
         {!isGourdOpen && <h1> 박을 마구마구 터치해보세요 !</h1>}
-        {isGourdOpen && <h1> 박이 열렸어요 ! 💌 오늘의 메시지 !</h1>}
+        {isGourdOpen && <h1> 박이 열렸어요 ! 💌 오늘의 메시지는 ?</h1>}
       </header>
       <section className={styles.gourdWrapper}>
         {!isGourdOpen && !isBasicGourdHide && (

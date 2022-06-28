@@ -2,17 +2,19 @@ import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'react-share'
+import cx from 'classnames'
 
 import Popup from './Popup'
 
 import data from 'assets/json/ment.json'
-import OpenGourd from 'assets/images/openGourd.png'
-import { CameraIcon } from 'assets/svgs'
+import OpenGourd from 'assets/images/openGourd2.png'
+import { CameraIcon, ShareIcon } from 'assets/svgs'
 import styles from './gourd.module.scss'
 
 const Gourd = () => {
   const [gourdText, setGourdText] = useState('')
   const [showPopup, setShowPopup] = useState(false)
+  const [isOpenShareBox, setIsOpenShareBox] = useState(false)
   const URL = process.env.REACT_APP_SHARE_URL ?? ''
   let popupDelay: NodeJS.Timer
 
@@ -56,6 +58,12 @@ const Gourd = () => {
     showPopupFunction()
   }
 
+  const handleShareBoxToggleClick = () => {
+    setIsOpenShareBox((prev) => !prev)
+  }
+
+  console.log(isOpenShareBox)
+
   useEffect(() => {
     const max = data.comment.length - 1
     const randomNumber = Math.floor(Math.random() * max)
@@ -72,7 +80,7 @@ const Gourd = () => {
         </div>
       </section>
 
-      <div className={styles.shareContainer}>
+      <div className={cx(styles.shareContainer, { [styles.openShareBox]: isOpenShareBox })}>
         <div className={styles.shareButtonWrapper}>
           <button
             type='button'
@@ -89,6 +97,9 @@ const Gourd = () => {
           <TwitterShareButton url={URL} title='트위터 공유'>
             <TwitterIcon size={48} round borderRadius={24} />
           </TwitterShareButton>
+          <button type='button' onClick={handleShareButtonClick} title='링크 공유'>
+            <ShareIcon />
+          </button>
         </div>
 
         <div className={styles.clipboardWrapper}>
@@ -107,7 +118,7 @@ const Gourd = () => {
         <NavLink to='/' className={styles.shareLink}>
           다시하기
         </NavLink>
-        <button type='button' onClick={handleShareButtonClick} className={styles.shareLink}>
+        <button type='button' onClick={handleShareBoxToggleClick} className={styles.shareLink}>
           친구야 너도 해볼래?
         </button>
       </div>
