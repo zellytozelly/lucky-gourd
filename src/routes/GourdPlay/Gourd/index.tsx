@@ -50,7 +50,7 @@ const Gourd = () => {
   const handleShareButtonClick = () => {
     navigator.clipboard.writeText(URL)
     showPopupFunction()
-    navigator.share(shareData)
+    if (navigator.canShare(shareData)) navigator.share(shareData)
   }
 
   const handleClipboardButtonClick = () => {
