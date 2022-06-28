@@ -62,8 +62,6 @@ const Gourd = () => {
     setIsOpenShareBox((prev) => !prev)
   }
 
-  console.log(isOpenShareBox)
-
   useEffect(() => {
     const max = data.comment.length - 1
     const randomNumber = Math.floor(Math.random() * max)
