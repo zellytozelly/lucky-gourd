@@ -2,17 +2,21 @@ import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'react-share'
+import cx from 'classnames'
+
+import Popup from './Popup'
 
 import data from 'assets/json/ment.json'
-import OpenGourd from 'assets/images/openGourd.png'
-import { CameraIcon } from 'assets/svgs'
+import OpenGourd from 'assets/images/openGourd2.png'
+import { CameraIcon, ShareIcon } from 'assets/svgs'
 import styles from './gourd.module.scss'
-import cx from 'classnames'
 
 const Gourd = () => {
   const [gourdText, setGourdText] = useState('')
-  const [revealPopup, setRevealPopup] = useState(false)
+  const [showPopup, setShowPopup] = useState(false)
+  const [isOpenShareBox, setIsOpenShareBox] = useState(false)
   const URL = process.env.REACT_APP_SHARE_URL ?? ''
+  let popupDelay: NodeJS.Timer
 
   const handleCaptureClick = () => {
     html2canvas(document.getElementById('popGourd') as HTMLElement).then((canvas) => {
@@ -31,20 +35,34 @@ const Gourd = () => {
 
   const shareData = {
     title: '박터트리기!',
-    text: '마구마구 터치해서 박을 터트려봐요! 랜선 박터트리기!',
+    text: '박터트리기 앱!!!',
     url: URL,
   }
 
+  const showPopupFunction = () => {
+    setShowPopup(true)
+    if (popupDelay) clearTimeout(popupDelay)
+    popupDelay = setTimeout(() => {
+      setShowPopup(false)
+    }, 800)
+  }
+
   const handleShareButtonClick = () => {
-    setRevealPopup((prev) => !prev)
-    if (!revealPopup) {
-      navigator.share(shareData)
-    }
+    navigator.clipboard.writeText(URL)
+    showPopupFunction()
+    navigator.share(shareData)
   }
 
   const handleClipboardButtonClick = () => {
     navigator.clipboard.writeText(URL)
+    showPopupFunction()
   }
+
+  const handleShareBoxToggleClick = () => {
+    setIsOpenShareBox((prev) => !prev)
+  }
+
+  console.log(isOpenShareBox)
 
   useEffect(() => {
     const max = data.comment.length - 1
@@ -62,7 +80,7 @@ const Gourd = () => {
         </div>
       </section>
 
-      <div className={cx(styles.popupContainer, { [styles.revealPopup]: revealPopup })}>
+      <div className={cx(styles.shareContainer, { [styles.openShareBox]: isOpenShareBox })}>
         <div className={styles.shareButtonWrapper}>
           <button
             type='button'
@@ -79,6 +97,9 @@ const Gourd = () => {
           <TwitterShareButton url={URL} title='트위터 공유'>
             <TwitterIcon size={48} round borderRadius={24} />
           </TwitterShareButton>
+          <button type='button' onClick={handleShareButtonClick} title='링크 공유'>
+            <ShareIcon />
+          </button>
         </div>
 
         <div className={styles.clipboardWrapper}>
@@ -87,13 +108,17 @@ const Gourd = () => {
             클립보드 복사
           </button>
         </div>
+
+        <div className={styles.popupWrapper}>
+          <Popup popupMessage='클립보드에 복사되었습니다.' showPopup={showPopup} />
+        </div>
       </div>
 
       <div className={styles.gourdShareLink}>
         <NavLink to='/' className={styles.shareLink}>
           다시하기
         </NavLink>
-        <button type='button' onClick={handleShareButtonClick} className={styles.shareLink}>
+        <button type='button' onClick={handleShareBoxToggleClick} className={styles.shareLink}>
           친구야 너도 해볼래?
         </button>
       </div>

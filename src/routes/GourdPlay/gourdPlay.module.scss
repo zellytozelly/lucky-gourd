@@ -2,19 +2,27 @@
 
 .gourdPlayContainer {
   .gourdPlayHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    margin-top: 15px;
+    margin-top: 30px;
 
-    svg {
-      width: 35px;
-      height: 35px;
-      fill: colors.$TEXT39;
+    .homeLink {
+      display: flex;
+      align-items: center;
+      margin-left: 15px;
+
+      svg {
+        width: 23px;
+        height: 25px;
+        fill: colors.$TEXT59;
+      }
+
+      p {
+        font-size: 26px;
+        color: colors.$TEXT59;
+      }
     }
 
     h1 {
+      margin: 12px 0 0 20px;
       font-size: 30px;
       font-weight: bold;
       color: colors.$TEXT29;
@@ -22,6 +30,8 @@
   }
 
   .gourdWrapper {
+    text-align: center;
+
     .basicGourdImg {
       width: 340px;
     }
@@ -55,8 +65,13 @@
       }
 
       @keyframes scale1 {
-        0% { transform: scale(0.8); }
-        100% { transform: scale(1); }
+        0% {
+          transform: scale(0.8);
+        }
+
+        100% {
+          transform: scale(1);
+        }
       }
     }
   }
