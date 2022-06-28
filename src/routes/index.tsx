@@ -1,11 +1,18 @@
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
+import { useGA } from 'hooks'
 import Main from './Main'
 import GourdPlay from './GourdPlay'
 
 import styles from './routes.module.scss'
 
 const App = () => {
+  const { initializeGA } = useGA()
+  useEffect(() => {
+    initializeGA()
+  })
+
   return (
     <div className={styles.appWrapper}>
       <div className={styles.app}>
