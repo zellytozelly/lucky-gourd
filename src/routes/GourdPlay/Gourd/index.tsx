@@ -10,12 +10,14 @@ import data from 'assets/json/ment.json'
 import OpenGourd from 'assets/images/openGourd2.png'
 import { CameraIcon, ShareIcon } from 'assets/svgs'
 import styles from './gourd.module.scss'
+import { useGA } from 'hooks'
 
 const Gourd = () => {
   const [gourdText, setGourdText] = useState('')
   const [showPopup, setShowPopup] = useState(false)
   const [isOpenShareBox, setIsOpenShareBox] = useState(false)
   const URL = process.env.REACT_APP_SHARE_URL ?? ''
+  const { gaEvent } = useGA()
   let popupDelay: NodeJS.Timer
 
   const handleCaptureClick = () => {
@@ -39,7 +41,7 @@ const Gourd = () => {
     url: URL,
   }
 
-  const showPopupFunction = () => {
+  const openCopyPopup = () => {
     setShowPopup(true)
     if (popupDelay) clearTimeout(popupDelay)
     popupDelay = setTimeout(() => {
@@ -49,13 +51,15 @@ const Gourd = () => {
 
   const handleShareButtonClick = () => {
     navigator.clipboard.writeText(URL)
-    showPopupFunction()
+    gaEvent({ action: 'share-click', data: { event: 'click' } })
+    openCopyPopup()
     if (navigator.canShare(shareData)) navigator.share(shareData)
   }
 
   const handleClipboardButtonClick = () => {
     navigator.clipboard.writeText(URL)
-    showPopupFunction()
+    gaEvent({ action: 'clipboard-click', data: { event: 'click' } })
+    openCopyPopup()
   }
 
   const handleShareBoxToggleClick = () => {
@@ -100,12 +104,12 @@ const Gourd = () => {
           </button>
         </div>
 
-        <div className={styles.clipboardWrapper}>
+        <button type='button' onClick={handleClipboardButtonClick} className={styles.clipboardWrapper}>
           <input type='text' value={URL} readOnly className={styles.clipboardInput} />
-          <button type='button' onClick={handleClipboardButtonClick} className={styles.clipboardButton}>
+          <button type='button' className={styles.clipboardButton}>
             클립보드 복사
           </button>
-        </div>
+        </button>
 
         <div className={styles.popupWrapper}>
           <Popup popupMessage='클립보드에 복사되었습니다.' showPopup={showPopup} />
