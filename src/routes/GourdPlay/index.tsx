@@ -4,8 +4,8 @@ import cx from 'classnames'
 import styles from './gourdPlay.module.scss'
 
 import { ArrowLeftIcon } from 'assets/svgs'
-import BasicGourd from 'assets/images/basicGourd1.png'
-import HitGourd from 'assets/images/hitGourd1.png'
+import BasicGourd from 'assets/images/basicGourd1.webp'
+import HitGourd from 'assets/images/hitGourd1.webp'
 
 import Gourd from './Gourd'
 

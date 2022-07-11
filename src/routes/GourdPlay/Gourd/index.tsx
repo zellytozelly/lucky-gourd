@@ -7,7 +7,7 @@ import styles from './gourd.module.scss'
 
 import { useGA } from 'hooks'
 import data from 'assets/json/ment.json'
-import OpenGourd from 'assets/images/openGourd2.png'
+import OpenGourd from 'assets/images/openGourd2.webp'
 import { CameraIcon, ShareIcon } from 'assets/svgs'
 
 import Popup from './Popup'
@@ -106,9 +106,7 @@ const Gourd = () => {
 
         <button type='button' onClick={handleClipboardButtonClick} className={styles.clipboardWrapper}>
           <input type='text' value={URL} readOnly className={styles.clipboardInput} />
-          <button type='button' className={styles.clipboardButton}>
-            클립보드 복사
-          </button>
+          <div className={styles.clipboard}>클립보드 복사</div>
         </button>
 
         <div className={styles.popupWrapper}>
