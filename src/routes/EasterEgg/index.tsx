@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import cx from 'classnames'
-
-import LJH from 'assets/images/him.jpg'
-import { HeartIcon } from 'assets/svgs'
 import styles from './easterEgg.module.scss'
+
+import Him from 'assets/images/him.jpg'
+import { HeartIcon } from 'assets/svgs'
 
 const EasterEgg = () => {
   const [heartToggle, setHeartToggle] = useState(false)
@@ -13,7 +13,7 @@ const EasterEgg = () => {
   }
   return (
     <div className={styles.easterEggContainer}>
-      <img src={LJH} alt='스승님' className={styles.mainImage} />
+      <img src={Him} alt='스승님' className={styles.mainImage} />
       <div className={cx(styles.blame, { [styles.blameActive]: heartToggle })} />
       <button
         type='button'

@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import cx from 'classnames'
-
-import Gourd from './Gourd'
+import styles from './gourdPlay.module.scss'
 
 import { ArrowLeftIcon } from 'assets/svgs'
 import BasicGourd from 'assets/images/basicGourd1.png'
 import HitGourd from 'assets/images/hitGourd1.png'
-import styles from './gourdPlay.module.scss'
+
+import Gourd from './Gourd'
 
 const GourdPlay = () => {
   const [isBasicGourdHide, setIsBasicGourdHide] = useState(false)

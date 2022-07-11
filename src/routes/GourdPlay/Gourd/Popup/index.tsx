@@ -1,5 +1,4 @@
 import { cx } from 'styles'
-
 import styles from './popup.module.scss'
 
 interface Props {

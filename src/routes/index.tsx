@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
+import styles from './routes.module.scss'
 
 import { useGA } from 'hooks'
+
 import Main from './Main'
 import GourdPlay from './GourdPlay'
-
-import styles from './routes.module.scss'
 import EasterEgg from './EasterEgg'
 
 const App = () => {

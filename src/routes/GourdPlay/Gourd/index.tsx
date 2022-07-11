@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'react-share'
 import cx from 'classnames'
+import styles from './gourd.module.scss'
 
-import Popup from './Popup'
-
+import { useGA } from 'hooks'
 import data from 'assets/json/ment.json'
 import OpenGourd from 'assets/images/openGourd2.png'
 import { CameraIcon, ShareIcon } from 'assets/svgs'
-import styles from './gourd.module.scss'
-import { useGA } from 'hooks'
+
+import Popup from './Popup'
 
 const Gourd = () => {
   const [gourdText, setGourdText] = useState('')

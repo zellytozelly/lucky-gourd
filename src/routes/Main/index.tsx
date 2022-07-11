@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
+import styles from './main.module.scss'
 
 import { useGA } from 'hooks'
-
 import BasicGourd from 'assets/images/mainGourd.png'
-import styles from './main.module.scss'
 
 const Main = () => {
   const { gaEvent } = useGA()
