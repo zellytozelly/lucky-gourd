@@ -20,7 +20,7 @@ const Main = () => {
         <Link to='play'>S T A R T</Link>
       </div>
       <footer className={styles.mainFooter}>
-        <a href='https://velog.io/@zelly' onClick={handleFooterClick}>
+        <a href='https://velog.io/@zelly/about' onClick={handleFooterClick}>
           @ zelly ,<span> @ wan</span>
         </a>
       </footer>
