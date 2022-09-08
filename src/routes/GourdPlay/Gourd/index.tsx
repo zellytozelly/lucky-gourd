@@ -1,21 +1,22 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'react-share'
 import cx from 'classnames'
+import styles from './gourd.module.scss'
+
+import { useGA } from 'hooks'
+import data from 'assets/json/ment.json'
+import OpenGourd from 'assets/images/openGourd2.webp'
+import { CameraIcon, ShareIcon } from 'assets/svgs'
 
 import Popup from './Popup'
-
-import data from 'assets/json/ment.json'
-import OpenGourd from 'assets/images/openGourd2.png'
-import { CameraIcon, ShareIcon } from 'assets/svgs'
-import styles from './gourd.module.scss'
 
 const Gourd = () => {
   const [gourdText, setGourdText] = useState('')
   const [showPopup, setShowPopup] = useState(false)
   const [isOpenShareBox, setIsOpenShareBox] = useState(false)
   const URL = process.env.REACT_APP_SHARE_URL ?? ''
+  const { gaEvent } = useGA()
   let popupDelay: NodeJS.Timer
 
   const handleCaptureClick = () => {
@@ -39,7 +40,7 @@ const Gourd = () => {
     url: URL,
   }
 
-  const showPopupFunction = () => {
+  const openCopyPopup = () => {
     setShowPopup(true)
     if (popupDelay) clearTimeout(popupDelay)
     popupDelay = setTimeout(() => {
@@ -49,13 +50,15 @@ const Gourd = () => {
 
   const handleShareButtonClick = () => {
     navigator.clipboard.writeText(URL)
-    showPopupFunction()
-    navigator.share(shareData)
+    gaEvent({ action: 'share-click', data: { event: 'click' } })
+    openCopyPopup()
+    if (navigator.canShare(shareData)) navigator.share(shareData)
   }
 
   const handleClipboardButtonClick = () => {
     navigator.clipboard.writeText(URL)
-    showPopupFunction()
+    gaEvent({ action: 'clipboard-click', data: { event: 'click' } })
+    openCopyPopup()
   }
 
   const handleShareBoxToggleClick = () => {
@@ -100,12 +103,10 @@ const Gourd = () => {
           </button>
         </div>
 
-        <div className={styles.clipboardWrapper}>
+        <button type='button' onClick={handleClipboardButtonClick} className={styles.clipboardWrapper}>
           <input type='text' value={URL} readOnly className={styles.clipboardInput} />
-          <button type='button' onClick={handleClipboardButtonClick} className={styles.clipboardButton}>
-            클립보드 복사
-          </button>
-        </div>
+          <div className={styles.clipboard}>클립보드 복사</div>
+        </button>
 
         <div className={styles.popupWrapper}>
           <Popup popupMessage='클립보드에 복사되었습니다.' showPopup={showPopup} />
@@ -113,9 +114,9 @@ const Gourd = () => {
       </div>
 
       <div className={styles.gourdShareLink}>
-        <NavLink to='/' className={styles.shareLink}>
+        <a href={`${URL}/play`} className={styles.shareLink}>
           다시하기
-        </NavLink>
+        </a>
         <button type='button' onClick={handleShareBoxToggleClick} className={styles.shareLink}>
           친구야 너도 해볼래?
         </button>

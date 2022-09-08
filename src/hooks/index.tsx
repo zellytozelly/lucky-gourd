@@ -6,6 +6,7 @@ export { useState, useEffect, useLayoutEffect, useCallback, useContext, useMemo,
 
 export { useAppDispatch } from './useAppDispatch'
 export { useAppSelector } from './useAppSelector'
+export { useGA } from './useGA'
 
 export function useMounted(): boolean {
   const [mounted, setMounted] = useState(false)
