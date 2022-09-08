@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import { FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton } from 'react-share'
 import cx from 'classnames'
@@ -115,9 +114,9 @@ const Gourd = () => {
       </div>
 
       <div className={styles.gourdShareLink}>
-        <NavLink to='/' className={styles.shareLink}>
+        <a href={`${URL}/play`} className={styles.shareLink}>
           다시하기
-        </NavLink>
+        </a>
         <button type='button' onClick={handleShareBoxToggleClick} className={styles.shareLink}>
           친구야 너도 해볼래?
         </button>
