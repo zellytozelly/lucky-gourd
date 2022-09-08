@@ -6,7 +6,6 @@ import { useGA } from 'hooks'
 
 import Main from './Main'
 import GourdPlay from './GourdPlay'
-import EasterEgg from './EasterEgg'
 
 const App = () => {
   const { initializeGA } = useGA()
@@ -20,7 +19,6 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='play' element={<GourdPlay />} />
-          <Route path='easterEgg' element={<EasterEgg />} />
           <Route
             path='*'
             element={
