@@ -9,9 +9,10 @@ import GourdPlay from './GourdPlay'
 
 const App = () => {
   const { initializeGA } = useGA()
+
   useEffect(() => {
     initializeGA()
-  })
+  }, [initializeGA])
 
   return (
     <div className={styles.appWrapper}>
